@@ -45,7 +45,7 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
 import { twMerge } from 'tailwind-merge'
-import { card as cardConfig } from '#ui/ui.config'
+import type { card as cardConfig } from '#ui/ui.config'
 import type { Button } from '#ui/types'
 
 const slots = useSlots()
@@ -85,11 +85,11 @@ const props = defineProps({
     default: undefined
   },
   links: {
-    type: Array as PropType<(Button & { click?: Function })[]>,
+    type: Array as PropType<(Button & { click?: (event: Event) => void })[]>,
     default: () => []
   },
   class: {
-    type: [String, Object, Array] as PropType<any>,
+    type: [String, Object, Array] as PropType<string | Record<string, unknown> | Array<unknown>>,
     default: undefined
   },
   ui: {
@@ -98,5 +98,5 @@ const props = defineProps({
   }
 })
 
-const { ui, attrs } = useUI('dashboard.card', toRef(props, 'ui'), config, toRef(props, 'class'), true)
+const { ui, attrs } = useUI('dashboard.card', toRef(props, 'ui'), config, toRef(props, 'class') as Ref<string>, true)
 </script>

@@ -53,13 +53,7 @@ export default defineNuxtModule({
 
       addComponentsDir({
         path: resolver.resolve('runtime/components/content'),
-        prefix: 'U',
-        pathPrefix: false
-      })
-
-      addComponentsDir({
-        path: resolver.resolve('runtime/components/docs'),
-        prefix: 'U',
+        prefix: 'UC',
         pathPrefix: false
       })
 
